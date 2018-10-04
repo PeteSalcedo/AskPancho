@@ -1,49 +1,62 @@
-import React, { Component } from 'react';
-//RHL only for front end development
-import { detect } from 'detect-browser';
-import Logo from './logo.svg';
-// import Navigation from './components/Navigation.js';
-// import { BrowserRouter, Route, Switch } from 'react-router-dom';
-// import Calendar from './components/calendar.jsx';
-import Assistant from './assistant';
 
-const browser = detect();
+import React, { Component } from "react";
+import firebase from "firebase";
+import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
 
-if (browser && browser.name === 'chrome') {
-  const assistant = new Assistant({
-    skills: [
-      require('./skills/time'),
-      require('./skills/schedule'),
-    ],
-  });
-  assistant.start();
-}
-
-
+firebase.initializeApp({
+apiKey: "AIzaSyB98qiRdWSgLuxVWPdfJSxJeO7luYrP7ZQ",
+authDomain: "holapancho-3bcee.firebaseapp.com"
+});
 
 class App extends Component {
-  render() {
+ constructor(props){
+   super(props)
+   this.state = {
+     isSignedIn: false
+   }
+ }
 
-    return (
-      <div className="App">
-        <div className="Content">
-          <Logo className="App-logo" alt="logo" />
-          <h2>
-            { (!browser || browser.name !== 'chrome')
-              ? 'Uh - Oh'
-              : ''
-            }
-          </h2>
-          <p className="Subtitle">
-            { (!browser || browser.name !== 'chrome')
-              ? 'You need Chrome to use this website!'
-              : ''
-            }
-          </p>
-        </div>
-      </div>
-    );
-  }
+
+componentDidMount() {
+ firebase.auth().onAuthStateChanged(user => {
+   this.setState({isSignedIn : !!user});
+   console.log("user", user);
+ });
 }
 
+render(){
+
+ var uiConfig = {
+   signInFlow: "popup",
+   signInOptions: [
+
+     firebase.auth.GithubAuthProvider.PROVIDER_ID,
+
+   ],
+   callbacks: {
+     signInSuccess: () => false
+   }
+ };
+ return (
+   <div>
+   {this.state.isSignedIn ?(
+     <span>
+     <div>Signed In!</div>
+     <button onClick={() => firebase.auth().signOut()}>Sign out!</button>
+     <h1>Welcome{firebase.auth().currentUser.displayName}</h1>
+     <img
+     alt="profile picture"
+     src={firebase.auth().currentUser.photoURL}
+     />
+     </span>
+   ) : (
+     <StyledFirebaseAuth
+     uiConfig={uiConfig}
+     firebaseAuth={firebase.auth()}
+     />
+   )}
+   </div>
+ );
+}
+}
 export default App;
