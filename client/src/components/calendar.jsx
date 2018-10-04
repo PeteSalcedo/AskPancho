@@ -18,7 +18,7 @@ class CalendarEvents extends Component {
 
   onCloseModal() {
     this.setState({ open: false });
-  };
+  }
 
   render() {
     const { open } = this.state;

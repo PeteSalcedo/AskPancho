@@ -2,6 +2,8 @@
 import React, { Component } from "react";
 import firebase from "firebase";
 import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
+import SideBar from './components/sidebar.jsx';
+import Chat from './components/chat.jsx';
 
 firebase.initializeApp({
 apiKey: "AIzaSyB98qiRdWSgLuxVWPdfJSxJeO7luYrP7ZQ",
@@ -50,7 +52,7 @@ render(){
      <span>
      <div>Signed In!</div>
      <button onClick={() => firebase.auth().signOut()}>Sign out!</button>
-     <h1>Welcome{firebase.auth().currentUser.displayName}</h1>
+     <h1>Welcome {firebase.auth().currentUser.displayName}</h1>
      <img
      alt="profile picture"
      src={firebase.auth().currentUser.photoURL}
