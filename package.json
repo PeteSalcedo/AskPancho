@@ -8,18 +8,24 @@
     "dev": "webpack --config webpack.config.js --watch --mode development",
     "frontend": "webpack-dev-server --hot --mode development",
     "start-dev": "nodemon server/index.js",
-    "build": "webpack --config webpack.config.prod.js --mode production"
+    "build": "webpack --config webpack.config.prod.js --mode production",
+    "test": "mocha"
   },
   "dependencies": {
     "body-parser": "^1.18.3",
     "compression": "^1.7.3",
     "detect-browser": "^2.1.0",
     "express": "^4.16.3",
+    "firebase": "^5.5.2",
+    "googleapis": "^27.0.0",
+    "mdbreact": "^4.8.0",
     "react": "^16.4.2",
     "react-bootstrap": "^0.32.4",
     "react-dom": "^16.4.2",
     "react-google-calendar-events-list": "^1.1.0",
-    "react-responsive-modal": "^3.4.0"
+    "react-responsive-modal": "^3.4.0",
+    "react-firebaseui": "^3.0.7",
+    "react-router-dom": "^4.3.1"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0",
