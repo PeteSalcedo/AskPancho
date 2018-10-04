@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Modal from 'react-responsive-modal';
-
-class CalendarEvents extends Component {
+//desplegar makerpass ticket
+class Attendance extends Component {
 
   constructor(props) {
     super(props)
@@ -25,7 +25,7 @@ class CalendarEvents extends Component {
 
     return (
       <div>
-        <button onClick={this.onOpenModal}>Calendar</button>
+        <button onClick={this.onOpenModal}>Attendance</button>
         <Modal open={open} onClose={this.onCloseModal} center>
           <iframe className='calendar' src="https://calendar.google.com/calendar/embed?mode=AGENDA&amp;height=600&amp;wkst=1&amp;bgcolor=%23ffffff&amp;src=holacode.com_49297h4c9415iuq3nrnm62sk8g%40group.calendar.google.com&amp;color=%2342104A&amp;ctz=America%2FMexico_City"></iframe>
         </Modal>
@@ -33,5 +33,4 @@ class CalendarEvents extends Component {
     )}
 }
 
-
-export default CalendarEvents;
+export default Attendance;
