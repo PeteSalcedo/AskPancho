@@ -10,6 +10,7 @@ pic-gallery/
 node_modules/
 
 ## API keys ##
+apiKey: "AIzaSyB98qiRdWSgLuxVWPdfJSxJeO7luYrP7ZQ"
 
 ## Mac OSX ##
 .DS_Store
