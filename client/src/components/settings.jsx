@@ -1,8 +1,4 @@
 import React, { Component } from "react";
-// import Status from './status.jsx';
-// import ChangePicture from './changePicture.jsx';
-// import firebase from "firebase";
-// import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
 import Modal from 'react-responsive-modal';
 
 class Settings extends Component {
@@ -31,44 +27,21 @@ class Settings extends Component {
       <div>
         <button onClick={this.onOpenModal}>Settings</button>
         <Modal open={open} onClose={this.onCloseModal} center>
-     <h1>Hello a little modal</h1>
+          <form onSubmit={this.handleSubmit} className="bookmark-form">
+              <input
+                  type="text"
+                  value={this.state.websiteAddress}
+                  onChange={this.updateInputState}
+                  placeholder="Add website address"
+                  autoFocus
+                  required
+              />
+              <input type="submit" value="Submit" />
+          </form>
+
         </Modal>
       </div>
     )}
 }
 
-
 export default Settings;
-
-
-
-// class Settings extends Component {
-//   getNewPhoto(){
-//     //pick user phot from device
-//     //pick user photo from some photoURL
-//
-//     //return value should be some url
-//   }
-//
-// updateProfile(){
-//   var user = firebase.auth().currentUser;
-//
-// user.updateProfile({
-//   displayName: user,
-//   // firebase.auth().currentUser.photoURL  getNewPhoto()
-// }).then(function() {
-//   // Update successful.
-// }).catch(function(error) {
-//
-// });
-// }
-//   render() {
-//     return (
-//       <div>
-//
-//       </div>
-//     )
-//   }
-// }
-//
-// export default Settings;
